@@ -166,23 +166,32 @@ class Grove4DigitDisplay {
 		this.__exit__()
 	}
 
-	// update(index, value) {
-	// if (((index < 0) || (index > 4))) {
-	// return;
-	// }
-	// if (charmap[value] != undefined) {
-	// this.data[index] = charmap[value];
-	// } else {
-	// this.data[index] = 0;
-	// }
-	// if (((index === this.colon_index) && this.show_colon)) {
-	// this.data[index] |= 128;
-	// this._transfer(ADDR_FIXED);
-	// this._transfer((STARTADDR | index));
-	// this._transfer(this.data[index]);
-	// this._transfer((136 + this.brightness));
-	// }
-	// }
+	update(index, value) {
+		if (((index < 0) || (index > 4))) {
+			return;
+		}
+		if (charmap[value] != undefined) {
+			this.data[index] = charmap[value];
+		} else {
+			this.data[index] = 0;
+		}
+		if (((index === this.colon_index) && this.show_colon)) {
+			this.data[index] |= 128;
+		}
+
+		this.__enter__()
+		this._transfer(ADDR_FIXED);
+		this.__exit__()
+
+		this.__enter__()
+		this._transfer((STARTADDR | index));
+		this._transfer(this.data[index]);
+		this.__exit__()
+
+		this.__enter__()
+		this._transfer((136 + this.brightness));
+		this.__exit__()
+	}
 
 	set_brightness(brightness) {
 		if ((brightness > 7)) {
