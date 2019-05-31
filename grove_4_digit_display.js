@@ -1,5 +1,6 @@
 const GPIO = require('onoff').Gpio;
 const time = require('sleep');
+const strftime = require('strftime')
 
 function _pj_snippets(container) {
 	function in_es6(left, right) {
@@ -116,8 +117,6 @@ class Grove4DigitDisplay {
 		negative;
 		if ((typeof data) === 'string') {
 			for (const [i, c] of Array.from(data).entries()) {
-				//for (var c, _pj_c = 0, _pj_a = enumerate(data), _pj_b = _pj_a.length; (_pj_c < _pj_b); _pj_c += 1) {
-				//c = _pj_a[_pj_c];
 				if (_pj.in_es6(c, charmap)) {
 					this.data[i] = charmap[c];
 				} else {
@@ -268,10 +267,8 @@ class Grove4DigitDisplay {
 }
 
 _pj.set_properties(Grove4DigitDisplay, {
-	"colon_index": 0
+	"colon_index": 1
 });
-
-// Grove = Grove4DigitDisplay;
 
 function main() {
 	var count,
@@ -283,15 +280,13 @@ function main() {
 	display = new Grove4DigitDisplay(pin, (pin + 1));
 	count = 0;
 
-	display.show("1234");
-
-	// while (true) {
-	// t = time.strftime("%H%M", time.localtime(time.time()));
-	// display.show(t);
-	// display.set_colon((count & 1));
-	// count += 1;
-	// time.sleep(1);
-	// }
+	while (true) {
+		t = strftime("%H%M", new Date());
+		display.show(t);
+		display.set_colon((count & 1));
+		count += 1;
+		time.sleep(1);
+	}
 }
 
 main();
