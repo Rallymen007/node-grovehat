@@ -3,17 +3,6 @@ const time = require('sleep');
 const strftime = require('strftime')
 
 function _pj_snippets(container) {
-	function in_es6(left, right) {
-		if (((right instanceof Array) || ((typeof right) === "string"))) {
-			return (right.indexOf(left) > ( - 1));
-		} else {
-			if (((right instanceof Map) || (right instanceof Set) || (right instanceof WeakMap) || (right instanceof WeakSet))) {
-				return right.has(left);
-			} else {
-				return (left in right);
-			}
-		}
-	}
 	function set_properties(cls, props) {
 		var desc,
 		value;
@@ -35,7 +24,6 @@ function _pj_snippets(container) {
 			}
 		}
 	}
-	container["in_es6"] = in_es6;
 	container["set_properties"] = set_properties;
 	return container;
 }
@@ -117,7 +105,7 @@ class Grove4DigitDisplay {
 		negative;
 		if ((typeof data) === 'string') {
 			for (const [i, c] of Array.from(data).entries()) {
-				if (_pj.in_es6(c, charmap)) {
+				if (charmap[c] != undefined) {
 					this.data[i] = charmap[c];
 				} else {
 					this.data[i] = 0;
@@ -183,7 +171,7 @@ class Grove4DigitDisplay {
 	// if (((index < 0) || (index > 4))) {
 	// return;
 	// }
-	// if (_pj.in_es6(value, charmap)) {
+	// if (charmap[value] != undefined) {
 	// this.data[index] = charmap[value];
 	// } else {
 	// this.data[index] = 0;
