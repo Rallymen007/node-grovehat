@@ -118,35 +118,34 @@ class Grove4DigitDisplay {
 				}
 			}
 		} else {
-			console.log("TODO: ", data);
-			// if ( (Object.getPrototypeOf(data) === 'number') ) {
-			// this.data = [0, 0, 0, charmap["0"]];
-			// if ((data < 0)) {
-			// negative = true;
-			// data = (- data);
-			// } else {
-			// negative = false;
-			// }
-			// index = 3;
-			// while ((data !== 0)) {
-			// this.data[index] = charmap[(data % 10).toString()];
-			// index -= 1;
-			// if ((index < 0)) {
-			// break;
-			// }
-			// data = Number.parseInt((data / 10));
-			// }
-			// if (negative) {
-			// if ((index >= 0)) {
-			// this.data[index] = charmap["-"];
-			// } else {
-			// this.data = (charmap["_"] + ([charmap["9"]] * 3));
-			// }
-			// }
-			// } else {
-			// throw new ValueError("Not support {}".format(Object.getPrototypeOf(data)));
-			// }
-		}
+			if ((typeof data) === 'number') {
+				this.data = [0, 0, 0, charmap["0"]];
+				if ((data < 0)) {
+					negative = true;
+					data = ( - data);
+				} else {
+					negative = false;
+				}
+				index = 3;
+				while ((data !== 0)) {
+					this.data[index] = charmap[(data % 10).toString()];
+					index -= 1;
+					if ((index < 0)) {
+						break;
+					}
+					data = Number.parseInt((data / 10));
+				}
+				if (negative) {
+					if ((index >= 0)) {
+						this.data[index] = charmap["-"];
+					} else {
+						this.data = (charmap["_"] + ([charmap["9"]] * 3));
+					}
+				}
+			} else {
+				throw new ValueError("Not support {}".format(Object.getPrototypeOf(data)));
+			}
+			}
 		this._show();
 	}
 
@@ -268,6 +267,13 @@ function main() {
 	display = new Grove4DigitDisplay(pin, (pin + 1));
 	count = 0;
 
+	for (var i = 10; i >= 0; i--) {
+		display.show(i);
+		time.msleep(200);
+	}
+	time.msleep(500);
+	display.clear();
+	time.msleep(500);
 	while (true) {
 		t = strftime("%H%M", new Date());
 		display.show(t);
