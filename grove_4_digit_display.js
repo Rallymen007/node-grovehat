@@ -1,6 +1,5 @@
 const GPIO = require('onoff').Gpio;
 const time = require('sleep');
-const strftime = require('strftime')
 
 function _pj_snippets(container) {
 	function set_properties(cls, props) {
@@ -150,20 +149,32 @@ class Grove4DigitDisplay {
 	}
 
 	_show() {
-		this.__enter__()
-		this._transfer(ADDR_AUTO);
-		this.__exit__()
-
-		this.__enter__()
-		this._transfer(STARTADDR);
-		for (var i = 0, _pj_a = 4; (i < _pj_a); i += 1) {
-			this._transfer(this.data[i]);
+		this.__enter__();
+		try {
+			this._transfer(ADDR_AUTO);
+		} catch (err) {
+		} finally {
+			this.__exit__();
 		}
-		this.__exit__()
 
-		this.__enter__()
-		this._transfer((136 + this.brightness));
-		this.__exit__()
+		this.__enter__();
+		try {
+			this._transfer(STARTADDR);
+			for (var i = 0, _pj_a = 4; (i < _pj_a); i += 1) {
+				this._transfer(this.data[i]);
+			}
+		} catch (err) {
+		} finally {
+			this.__exit__();
+		}
+
+		this.__enter__();
+		try {
+			this._transfer((136 + this.brightness));
+		} catch (err) {
+		} finally {
+			this.__exit__();
+		}
 	}
 
 	update(index, value) {
@@ -180,17 +191,29 @@ class Grove4DigitDisplay {
 		}
 
 		this.__enter__()
-		this._transfer(ADDR_FIXED);
-		this.__exit__()
+		try {
+			this._transfer(ADDR_FIXED);
+		} catch (err) {
+		} finally {			
+			this.__exit__()
+		}
 
 		this.__enter__()
-		this._transfer((STARTADDR | index));
-		this._transfer(this.data[index]);
-		this.__exit__()
+		try {
+			this._transfer((STARTADDR | index));
+			this._transfer(this.data[index]);
+		} catch (err) {
+		} finally {
+			this.__exit__()
+		}
 
 		this.__enter__()
-		this._transfer((136 + this.brightness));
-		this.__exit__()
+		try {
+			this._transfer((136 + this.brightness));
+		} catch(err) {
+		} finally {
+			this.__exit__()
+		}
 	}
 
 	set_brightness(brightness) {
@@ -257,7 +280,7 @@ class Grove4DigitDisplay {
 		this._start();
 	}
 
-	__exit__(exc_type, exc_val, exc_tb) {
+	__exit__() {
 		this._stop();
 	}
 }
@@ -266,30 +289,4 @@ _pj.set_properties(Grove4DigitDisplay, {
 	"colon_index": 1
 });
 
-function main() {
-	var count,
-	display,
-	pin,
-	t;
-	pin = 5;
-
-	display = new Grove4DigitDisplay(pin, (pin + 1));
-	count = 0;
-
-	for (var i = 10; i >= 0; i--) {
-		display.show(i);
-		time.msleep(200);
-	}
-	time.msleep(500);
-	display.clear();
-	time.msleep(500);
-	while (true) {
-		t = strftime("%H%M", new Date());
-		display.show(t);
-		display.set_colon((count & 1));
-		count += 1;
-		time.sleep(1);
-	}
-}
-
-main();
+module.exports = Grove4DigitDisplay;
