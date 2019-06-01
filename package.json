@@ -1,0 +1,30 @@
+{
+  "name": "node-grovehat",
+  "version": "0.0.6",
+  "description": "Native addon for accessing IMU/pressure/humidity/temperature sensors using RTIMULib2",
+  "license": "BSD-2-Clause-FreeBSD",
+  "author": "Stéphane Lavirotte <stephane@lavirotte.com>",
+  "contributors": [
+    {
+      "name": "Stéphane Lavirotte",
+      "email": "stephane@lavirotte.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lavirott/node-grovehat"
+  },
+  "main": "./index.js",
+  "dependencies": {
+    "onoff": "0.2.1",
+    "sleep": "6.1.0",
+		"strftime": "0.10.0"
+  },
+  "keywords": [
+    "raspberry",
+    "pi",
+    "grove",
+    "hat"
+  ],
+  "readmeFilename": "README.md"
+}
