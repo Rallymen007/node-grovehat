@@ -4,7 +4,10 @@
   "description": "Addon for accessing Grove 4 Digit Display through out Grove Base Hat",
   "license": "MIT",
   "author": "Stéphane Lavirotte <stephane@lavirotte.com>",
-  "contributors": [
+  "engines" : {
+		"node": ">=9.3"
+	},
+	"contributors": [
     {
       "name": "Stéphane Lavirotte",
       "email": "stephane@lavirotte.com"
