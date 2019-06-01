@@ -1,7 +1,7 @@
 {
   "name": "node-grovehat",
-  "version": "0.0.7",
-  "description": "Addon for accessing Grove actuators and sensors through out Grove Base Hat",
+  "version": "0.0.8",
+  "description": "Addon for accessing Grove 4 Digit Display through out Grove Base Hat",
   "license": "MIT",
   "author": "Stéphane Lavirotte <stephane@lavirotte.com>",
   "contributors": [
@@ -14,7 +14,7 @@
     "type": "git",
     "url": "https://github.com/lavirott/node-grovehat"
   },
-  "main": "./index.js",
+  "main": "./grove_4_digit_display.js",
   "dependencies": {
     "onoff": "4.1.1",
     "sleep": "6.1.0",
