@@ -1,8 +1,8 @@
 {
   "name": "node-grovehat",
-  "version": "0.0.6",
-  "description": "Native addon for accessing IMU/pressure/humidity/temperature sensors using RTIMULib2",
-  "license": "BSD-2-Clause-FreeBSD",
+  "version": "0.0.7",
+  "description": "Addon for accessing Grove actuators and sensors through out Grove Base Hat",
+  "license": "MIT",
   "author": "Stéphane Lavirotte <stephane@lavirotte.com>",
   "contributors": [
     {
@@ -16,7 +16,7 @@
   },
   "main": "./index.js",
   "dependencies": {
-    "onoff": "0.2.1",
+    "onoff": "4.1.1",
     "sleep": "6.1.0",
 		"strftime": "0.10.0"
   },
