@@ -4,4 +4,4 @@ const GroveAnalogSensor = require('./adc.js');
 
 module.exports.Grove4DigitDisplay = Grove4DigitDisplay;
 module.exports.GroveChainableRGBLed = GroveChainableRGBLed;
-module.exports.AnalogSensor = GroveAnalogSensor;
+module.exports.GroveAnalogSensor = GroveAnalogSensor;

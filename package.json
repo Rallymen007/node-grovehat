@@ -1,6 +1,6 @@
 {
   "name": "node-grovehat",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Addon for accessing Grove actuators (4 Digit Display and Chainable RGB Led) through out Grove Base Hat",
   "license": "MIT",
   "author": "Stéphane Lavirotte <stephane@lavirotte.com>",

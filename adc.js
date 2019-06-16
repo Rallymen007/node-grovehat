@@ -115,4 +115,4 @@ class ADC {
 	}
 }
 
-module.exports = ADC
+module.exports = ADC;
