@@ -4,10 +4,10 @@
   "description": "Addon for accessing Grove 4 Digit Display through out Grove Base Hat",
   "license": "MIT",
   "author": "Stéphane Lavirotte <stephane@lavirotte.com>",
-  "engines" : {
-		"node": ">=9.3"
-	},
-	"contributors": [
+  "engines": {
+    "node": ">=9.3"
+  },
+  "contributors": [
     {
       "name": "Stéphane Lavirotte",
       "email": "stephane@lavirotte.com"
@@ -21,7 +21,7 @@
   "dependencies": {
     "onoff": "4.1.1",
     "sleep": "6.1.0",
-		"strftime": "0.10.0"
+    "strftime": "0.10.0"
   },
   "keywords": [
     "raspberry",
